@@ -1,5 +1,5 @@
 <h1>New Game</h1>
-<p>Player Score: <%= @score %></p>
+<p>Player Score: <%= session[:score] %></p>
 <ul class="list-inline">
   <% @letters.each do |l| %>
     <li class="list-inline-item"><div class="letter-case btn-primary"><%= l %></div></li>
@@ -9,6 +9,7 @@
 <form action="score" class="form-inline">
   <div class="form-group">
     <%= hidden_field_tag 'token', @letters %>
+    <%= hidden_field_tag 'session', session[:words] %>
     <input  id="word-form" type="text" class="form-control" name="word">
   </div>
     <button type="submit" class="btn btn-primary">Submit</button>

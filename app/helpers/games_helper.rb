@@ -13,9 +13,8 @@ module GamesHelper
   end
 
   def validate_word(hash, word, letters)
-    return "Word not found" unless check(hash)
-    return "Word invalid" unless is_valid?(word, letters)
-    @valid_word = true;
-    "Congratulations! #{word} is valid!"
+    return { phrase: "#{word} is not a valid English word", points: 0 } unless check(hash)
+    return { phrase: "#{letters} does not contain #{word}", points: 0 } unless is_valid?(word, letters)
+    { points: word.length ** 2, phrse: "Congratulations! #{word} is valid!" }
   end
 end

@@ -3,16 +3,13 @@ require 'open-uri'
 
 class GamesController < ApplicationController
 
-  def points
-
-  end
-
   def new
     all_letters = [*"A".."Z"]
     vowels = ["A", 'E', "I", "O", "U"]
     vowels.each { |v| all_letters << v }
     @letters = []
     10.times { @letters << all_letters.sample }
+    session[:score] ||= 0
   end
 
   def score

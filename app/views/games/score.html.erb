@@ -1,4 +1,6 @@
 <h1>Score</h1>
-<%= @word %>
-<p><%= validate_word(@result, @word, @letters) %></p>
+<% result = validate_word(@result, @word, @letters) %>
+<% session[:score] += result[:points].to_i %>
+<p><%= result[:phrse] %></p>
+<p>Points value: <%= result[:points] %></p>
 <%= link_to "New Game", "new" %>
