@@ -14,3 +14,19 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+document.addEventListener("turbolinks:load", () => {
+  listeners();
+});
+
+const listeners = () => {
+  const wordForm = document.getElementById('word-form');
+  const letters = document.querySelectorAll('.letter-case');
+
+  const addLetter = (event) => {
+    wordForm.value += event.currentTarget.innerHTML;
+  }
+
+  letters.forEach ((l) => {
+    l.addEventListener('click', addLetter);
+  })
+}
